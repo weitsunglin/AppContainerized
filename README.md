@@ -1,6 +1,7 @@
 # docker-compose-template
 for build c# service, data base and jenkins
 
+Docker Compose 是一個用於定義和運行多容器 Docker 應用的工具，它允許通過一個簡單的 YAML 文件配置應用程序的各個服務，並使用一個命令來啟動、停止和管理所有服務。
 
 # 使用 Docker Compose 建立 C# 服務、資料庫和 Jenkins
 
