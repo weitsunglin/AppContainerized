@@ -70,7 +70,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
     environment:
-      SA_PASSWORD: "YourStrong!Password"
+      SA_PASSWORD: "YourStrong@Passw0rd"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
@@ -119,6 +119,6 @@ docker-compose up -d
 
 - **C# 服務**：`http://localhost:5000`
 - **Jenkins**：`http://localhost:8080/jenkins`
-- **資料庫**：使用連接字符串 `Server=localhost,1433;User=sa;Password=YourStrong!Password;`
+- **資料庫**：使用連接字符串 `Server=localhost,1433;User=sa;Password=YourStrong@Passw0rd;`
 
 這樣，您就可以使用 Docker Compose 從源代碼建置並運行 C# 服務，同時配置資料庫和 Jenkins 服務。如果有任何問題或需要進一步的幫助，請告訴我。
