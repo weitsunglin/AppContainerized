@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  myapp:
+    build: .
+    ports:
+      - "5000:80"  # 將容器的端口 80 映射到主機的端口 5000
+      - "5001:5001"  # 將容器的端口 5001 映射到主機的端口 5001（Socket 服務器）
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=MyDatabase;User=sa;Password=YourStrong@Passw0rd;
+    volumes:
+      - shared_data:/shared_data
+    depends_on:
+      - sqlserver
+    networks:
+      - mynetwork
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"  # 將容器的端口 1433 映射到主機的端口 1433
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - shared_data:/shared_data
+    networks:
+      - mynetwork
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8081:8080"  # 將 Jenkins 的端口 8080 映射到主機的端口 8081
+      - "50000:50000"  # 將 Jenkins 的端口 50000 映射到主機的端口 50000（用於代理連接）
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # 允許 Jenkins 訪問 Docker 守護進程
+      - shared_data:/shared_data
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false  # 禁用 Jenkins 安裝向導
+    networks:
+      - mynetwork
+
+volumes:
+  sqlserver_data:
+  jenkins_home:
+  shared_data:
+
+networks:
+  mynetwork:

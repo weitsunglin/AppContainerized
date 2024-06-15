@@ -1,0 +1,20 @@
+Pipeline
+Pipeline: Job
+Pipeline: Stage View
+Pipeline: SCM Step
+Pipeline: Nodes and Processes
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Test API') {
+            steps {
+                script {
+                    def response = sh(script: 'curl -X POST -H "Content-Type: application/json" -d \'{"query": "SELECT * FROM YourTable"}\' http://myapp:80/api/HttpRequestHandler/execute-query', returnStdout: true)
+                    echo "Response: ${response}"
+                }
+            }
+        }
+    }
+}

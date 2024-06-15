@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0\ClientExample.exe
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0\ClientExample.deps.json
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0\ClientExample.runtimeconfig.json
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0\ClientExample.dll
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0\ClientExample.pdb
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.AssemblyInfo.cs
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.sourcelink.json
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.dll
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\refint\ClientExample.dll
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.pdb
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ClientExample.genruntimeconfig.cache
+C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\obj\Debug\net8.0\ref\ClientExample.dll
