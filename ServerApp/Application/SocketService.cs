@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 
-namespace MyApp
+namespace MyApp.Services
 {
-    public class SocketService : ISocketService
+    public class SocketService
     {
         private TcpListener _listener;
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
@@ -56,8 +56,8 @@ namespace MyApp
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                     Console.WriteLine($"Received: {message}");
 
-                    // Respond to client
-                    var response = Encoding.UTF8.GetBytes("Hello from server");
+                    // Process the message based on the protocol
+                    var response = ProcessMessage(message);
                     await stream.WriteAsync(response, 0, response.Length);
                     Console.WriteLine("Response sent.");
                 }
@@ -71,6 +71,29 @@ namespace MyApp
                 client.Close();
                 Console.WriteLine("Client disconnected.");
             }
+        }
+
+        private byte[] ProcessMessage(string message)
+        {
+            string responseMessage;
+
+            switch (message.Trim())
+            {
+                case "1":
+                    responseMessage = CommandHandlers.HandleCommand1();
+                    break;
+                case "2":
+                    responseMessage = CommandHandlers.HandleCommand2();
+                    break;
+                case "3":
+                    responseMessage = CommandHandlers.HandleCommand3();
+                    break;
+                default:
+                    responseMessage = CommandHandlers.HandleUnknownCommand();
+                    break;
+            }
+
+            return Encoding.UTF8.GetBytes(responseMessage);
         }
 
         public void Stop()

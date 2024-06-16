@@ -1,6 +1,7 @@
-# Docker Compose 架構說明
+# Docker Compose
 
-這個 `docker-compose.yml` 文件定義了三個服務：`myapp`、`sqlserver` 和 `jenkins`。這些服務共享一個名為 `mynetwork` 的 Docker 網路，以及兩個卷（volume）：`shared_data` 和 `sqlserver_data`。
+這個 `docker-compose.yml` 文件定義了三個服務：`myapp`、`sqlserver` 和 `jenkins`。
+這些服務共享一個名為 `mynetwork` 的 Docker 網路，以及兩個卷（volume）：`shared_data` 和 `sqlserver_data`。
 
 ## 架構圖示
 

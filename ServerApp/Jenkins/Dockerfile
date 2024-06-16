@@ -14,9 +14,10 @@ RUN jenkins-plugin-cli --plugins \
     pipeline-stage-view \
     workflow-scm-step \
     workflow-durable-task-step \
-    ws-cleanup
+    ws-cleanup 
 
- # 複製初始化腳本
+
+# 複製初始化腳本
 COPY init.groovy.d /usr/share/jenkins/ref/init.groovy.d/
 
 # 切換回 Jenkins 用戶

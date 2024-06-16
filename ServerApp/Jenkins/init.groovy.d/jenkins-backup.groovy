@@ -68,4 +68,5 @@ job.setDescription(jobDescription)
 job.setDefinition(new CpsFlowDefinition(pipelineScript, true))
 
 println("Pipeline job '${jobName}' created successfully.")
+
 jenkins.save()

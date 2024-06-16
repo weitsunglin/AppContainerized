@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   myapp:
@@ -10,7 +10,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=MyDatabase;User=sa;Password=YourStrong@Passw0rd;
     volumes:
-      - /c/Users/User/Desktop:/shared_data  # 使用簡單掛載格式
+      - /c/Users/User/Desktop:/shared_data
     depends_on:
       - sqlserver
     networks:
@@ -25,22 +25,22 @@ services:
       - "1433:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
-      - /c/Users/User/Desktop:/shared_data  # 使用簡單掛載格式
+      - /c/Users/User/Desktop:/shared_data
     networks:
       - mynetwork
 
   jenkins:
     build:
-      context: ../ServerApp/Jenkins  # 確保這是 Dockerfile 所在的正確目錄
-      dockerfile: Dockerfile  # 可選，默認為 'Dockerfile'
+      context: ./Jenkins
+      dockerfile: Dockerfile
     user: root
     ports:
       - "8081:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock  # 允許 Jenkins 訪問 Docker 守護進程
-      - /c/Users/User/Desktop:/shared_data  # 使用簡單掛載格式
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /c/Users/User/Desktop:/shared_data
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
     networks:

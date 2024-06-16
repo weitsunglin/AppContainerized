@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace MyApp.Services
 {
@@ -42,6 +43,42 @@ namespace MyApp.Services
                 result.Add(row);
             }
             return result;
+        }
+        
+        // 新增資料表
+        public async Task CreateTableAsync(string tableName, Dictionary<string, string> columns)
+        {
+            var columnDefinitions = string.Join(", ", columns.Select(kvp => $"{kvp.Key} {kvp.Value}"));
+            var query = $"CREATE TABLE {tableName} ({columnDefinitions})";
+
+            await ExecuteNonQueryAsync(query);
+        }
+
+        // 插入資料
+        public async Task InsertDataAsync(string tableName, Dictionary<string, object> data)
+        {
+            var columns = string.Join(", ", data.Keys);
+            var values = string.Join(", ", data.Values.Select(value => $"'{value}'"));
+            var query = $"INSERT INTO {tableName} ({columns}) VALUES ({values})";
+
+            await ExecuteNonQueryAsync(query);
+        }
+
+        // 更新資料
+        public async Task UpdateDataAsync(string tableName, Dictionary<string, object> data, string whereClause)
+        {
+            var setClauses = string.Join(", ", data.Select(kvp => $"{kvp.Key} = '{kvp.Value}'"));
+            var query = $"UPDATE {tableName} SET {setClauses} WHERE {whereClause}";
+
+            await ExecuteNonQueryAsync(query);
+        }
+
+        // 刪除資料
+        public async Task DeleteDataAsync(string tableName, string whereClause)
+        {
+            var query = $"DELETE FROM {tableName} WHERE {whereClause}";
+
+            await ExecuteNonQueryAsync(query);
         }
     }
 }

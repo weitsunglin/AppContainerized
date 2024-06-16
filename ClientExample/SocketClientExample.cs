@@ -7,7 +7,7 @@ namespace ClientExample
 {
     public class SocketClientExample
     {
-        public static async Task PerformSocketCommunication()
+        public static async Task PerformSocketCommunication(string command)
         {
             string server = "localhost";
             int port = 5001;  // 连接到主机的端口 5001
@@ -21,10 +21,9 @@ namespace ClientExample
                     using (NetworkStream stream = client.GetStream())
                     {
                         // 发送消息到服务器
-                        string message = "Hello from socket client";
-                        byte[] data = Encoding.UTF8.GetBytes(message);
+                        byte[] data = Encoding.UTF8.GetBytes(command);
                         await stream.WriteAsync(data, 0, data.Length);
-                        Console.WriteLine($"Sent to server: {message}");
+                        Console.WriteLine($"Sent to server: {command}");
 
                         // 接收来自服务器的消息
                         byte[] buffer = new byte[1024];

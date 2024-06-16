@@ -1,19 +1,27 @@
-# 使用官方的 .NET SDK 映像構建應用
+# Use the official .NET SDK image as the build environment
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+# Set the working directory
 WORKDIR /app
 
-# 複製 csproj 並還原依賴項
+# Copy the .csproj file and restore dependencies
 COPY *.csproj ./
 RUN dotnet restore
 
-# 複製其餘的文件並構建應用
+# Copy the project files to the container
 COPY . ./
+
+# Publish the application
 RUN dotnet publish -c Release -o out
 
-# 使用官方的 .NET 運行時映像運行應用
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+# Use the official .NET runtime image as the runtime environment
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/out .
 
-# 設置應用程序入口點
+# Expose the port the application runs on
+EXPOSE 80
+EXPOSE 443
+
+# Run the application
 ENTRYPOINT ["dotnet", "MyApp.dll"]
