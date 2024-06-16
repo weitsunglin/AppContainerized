@@ -9,31 +9,41 @@ namespace MyApp
 {
     public class Startup
     {
+        // 建構函數，注入配置
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            AppConfiguration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        // 保存應用程式配置的屬性
+        public IConfiguration AppConfiguration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        // 註冊應用程式所需的服務
+        public void ConfigureServices(IServiceCollection serviceCollection)
         {
-            services.AddControllers();
-            services.AddSingleton<HttpRequestHandler>();
-            services.AddSingleton<DatabaseHandler>();
-            services.AddSingleton<ISocketService, SocketService>();
+            // 添加控制器支持
+            serviceCollection.AddControllers();
+            
+            // 註冊單例服務
+            serviceCollection.AddSingleton<HttpRequestHandler>();
+            serviceCollection.AddSingleton<DatabaseHandler>();
+            serviceCollection.AddSingleton<ISocketService, SocketService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISocketService socketService)
+        // 配置應用程式的請求處理管道
+        public void Configure(IApplicationBuilder appBuilder, IWebHostEnvironment webHostEnvironment, ISocketService socketService)
         {
-            if (env.IsDevelopment())
+            // 如果是開發環境，使用開發者異常頁面
+            if (webHostEnvironment.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                appBuilder.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            // 啟用路由中間件
+            appBuilder.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+            // 配置端點映射
+            appBuilder.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });

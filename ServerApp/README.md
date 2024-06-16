@@ -5,17 +5,18 @@
 ## 架構圖示
 
 ```plaintext
+
 +-------------------+      +-------------------+      +------------------+
 |                   |      |                   |      |                  |
-|     myapp         |      |     sqlserver     |      |      jenkins     |
+|      myapp        |      |     sqlserver     |      |      jenkins     |
 |                   |      |                   |      |                  |
-|  Ports:           |      |  Ports:           |      |  Ports:          |
-|   5000:80         |      |   1433:1433       |      |   8081:8080      |
-|   5001:5001       |      |                   |      |   50000:50000    |
-|                   |      |  Volumes:         |      |                  |
-|  Volumes:         |<---->|   /var/opt/mssql  |<---->|  Volumes:        |
-|   shared_data     |      |   shared_data     |      |   jenkins_home   |
-|                   |      |                   |      |   shared_data    |
-|  Network:         |      |  Network:         |      |  Network:        |
-|   mynetwork       |      |   mynetwork       |      |   mynetwork      |
+|   Ports:          |      |   Ports:          |      |   Ports:         |
+|    5000:80        |      |    1433:1433      |      |    8081:8080     |
+|    5001:5001      |      |                   |      |    50000:50000   |
+|                   |      |   Volumes:        |      |                  |
+|   Volumes:        |<---->|   /var/opt/mssql  |<---->|   jenkins_home   |
+|    shared_data    |      |   shared_data     |      |   shared_data    |
+|                   |      |                   |      |                  |
+|   Network:        |      |   Network:        |      |   Network:       |
+|    mynetwork      |      |    mynetwork      |      |    mynetwork     |
 +-------------------+      +-------------------+      +------------------+

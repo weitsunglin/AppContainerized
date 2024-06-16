@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 
 namespace MyApp
 {
@@ -17,6 +19,9 @@ namespace MyApp
             _listener = new TcpListener(IPAddress.Any, 5001);
             _listener.Start();
             Console.WriteLine("Socket server started on port 5001");
+
+            string executionPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            Console.WriteLine($"Execution Path: {executionPath}");
 
             try
             {

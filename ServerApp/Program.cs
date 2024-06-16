@@ -5,15 +5,19 @@ namespace MyApp
 {
     public class Program
     {
-        public static void Main(string[]args)
+        // 應用程式的進入點
+        public static void Main(string[] arguments)
         {
-            CreateHostBuilder(args).Build().Run();
+            // 建立並運行主機
+            CreateHostBuilder(arguments).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        // 配置主機生成器
+        public static IHostBuilder CreateHostBuilder(string[] arguments) =>
+            Host.CreateDefaultBuilder(arguments)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    // 設定 Startup 類來配置應用程式
                     webBuilder.UseStartup<Startup>();
                 });
     }
