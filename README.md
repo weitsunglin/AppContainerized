@@ -75,8 +75,8 @@ jenkins 服務通過 http://localhost:8081 和 http://localhost:50000 訪問。
     cd C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample
 2. 建構client 專案
     dotnet build -c Debug
-    dotnet build -c Release 
-3.找到應用程式並執行它
+    dotnet build -c Release
+3. 找到應用程式並執行它
     C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Debug\net8.0
     C:\Users\User\Desktop\work_space\docker-compose-template\ClientExample\bin\Release\net8.0
 
