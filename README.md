@@ -93,9 +93,9 @@ jenkins 服務通過 http://localhost:8081 和 http://localhost:50000 訪問。
 
 ### jenkins 備份
 
-![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20backup1.jpg)
+![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20%20backup1.jpg)
 
-![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20backup2.jpg)
+![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20%20backup2.jpg)
 
 ### client 端介面
 
