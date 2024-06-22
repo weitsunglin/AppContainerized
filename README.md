@@ -83,8 +83,22 @@ jenkins 服務通過 http://localhost:8081 和 http://localhost:50000 訪問。
 
 ### demo
 
-![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/backup.jpg)
-![client](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/client.jpg)
-![jenkins_to_http_service](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20to%20http%20service.jpg)
+### service面板
+
+![services](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/services%20panel.jpg)
+
+### mssql 連 docker sqlserver
+
 ![mssql_to_docker_sqlserver](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/mssql%20to%20docker%20sqlserver.jpg)
-![services](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/services.jpg)
+
+### jenkins 備份
+
+![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20backup1.jpg)
+
+![backup](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/jenkins%20backup2.jpg)
+
+### client 端介面
+
+![client](https://github.com/weitsunglin/docker-compose-template/blob/main/demo/client.jpg)
+
+© 2024 weitusnglin. All rights reserved.
