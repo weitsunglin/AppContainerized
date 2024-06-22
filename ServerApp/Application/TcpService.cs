@@ -9,10 +9,10 @@ using System.Reflection;
 
 namespace MyApp.Services
 {
-    public class SocketService
+    public class TcpService
     {
         private TcpListener _listener;
-        private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
         public async Task StartAsync()
         {
@@ -80,16 +80,16 @@ namespace MyApp.Services
             switch (message.Trim())
             {
                 case "1":
-                    responseMessage = CommandHandlers.HandleCommand1();
+                    responseMessage = CommandService.ExecuteCommand1();
                     break;
                 case "2":
-                    responseMessage = CommandHandlers.HandleCommand2();
+                    responseMessage = CommandService.ExecuteCommand2();
                     break;
                 case "3":
-                    responseMessage = CommandHandlers.HandleCommand3();
+                    responseMessage = CommandService.ExecuteCommand3();
                     break;
                 default:
-                    responseMessage = CommandHandlers.HandleUnknownCommand();
+                    responseMessage = CommandService.ExecuteUnknownCommand();
                     break;
             }
 

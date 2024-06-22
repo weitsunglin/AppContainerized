@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace ClientExample
 {
-    public class HttpClientExample
+    public class HttpClientService
     {
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task PerformSelectRequest()
         {
-            string url = "http://localhost:5000/api/HttpRequestHandler/execute-query";
+            string url = "http://localhost:5000/api/HttpRequest/execute-query";
             string query = "SELECT * FROM YourTable";
             string jsonPayload = $"{{\"query\": \"{query}\"}}";
 
@@ -33,7 +33,7 @@ namespace ClientExample
 
         public static async Task PerformInsertRequest(string name, int age)
         {
-            string url = "http://localhost:5000/api/HttpRequestHandler/execute-query";
+            string url = "http://localhost:5000/api/HttpRequest/execute-query";
             string query = $"INSERT INTO YourTable (Name, Age) VALUES ('{name}', {age})";
             string jsonPayload = $"{{\"query\": \"{query}\"}}";
 

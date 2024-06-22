@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyApp.Modules;
 using System.Linq;
 
 namespace MyApp
@@ -11,15 +10,6 @@ namespace MyApp
         public static void Main(string[] arguments)
         {
             var host = CreateHostBuilder(arguments).Build();
-
-
-            var services = host.Services;
-            var modules = services.GetServices<IModule>();
-            foreach (var module in modules)
-            {
-                module.Initialize();
-            }
-
             host.Run();
         }
 

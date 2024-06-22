@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ClientExample
 {
-    public class SocketClientExample
+    public class TcpClientService
     {
         public static async Task PerformSocketCommunication(string command)
         {

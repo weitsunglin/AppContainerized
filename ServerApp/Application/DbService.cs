@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace MyApp.Services
 {
-    public class DatabaseHandler
+    public class DbService
     {
         private readonly string _connectionString;
 
-        public DatabaseHandler(IConfiguration configuration)
+        public DbService(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
@@ -45,7 +45,7 @@ namespace MyApp.Services
             return result;
         }
         
-        // 新增資料表
+        // Create Table
         public async Task CreateTableAsync(string tableName, Dictionary<string, string> columns)
         {
             var columnDefinitions = string.Join(", ", columns.Select(kvp => $"{kvp.Key} {kvp.Value}"));
@@ -54,7 +54,7 @@ namespace MyApp.Services
             await ExecuteNonQueryAsync(query);
         }
 
-        // 插入資料
+        // Insert Data
         public async Task InsertDataAsync(string tableName, Dictionary<string, object> data)
         {
             var columns = string.Join(", ", data.Keys);
@@ -64,7 +64,7 @@ namespace MyApp.Services
             await ExecuteNonQueryAsync(query);
         }
 
-        // 更新資料
+        // Update Data
         public async Task UpdateDataAsync(string tableName, Dictionary<string, object> data, string whereClause)
         {
             var setClauses = string.Join(", ", data.Select(kvp => $"{kvp.Key} = '{kvp.Value}'"));
@@ -73,7 +73,7 @@ namespace MyApp.Services
             await ExecuteNonQueryAsync(query);
         }
 
-        // 刪除資料
+        // Delete Data
         public async Task DeleteDataAsync(string tableName, string whereClause)
         {
             var query = $"DELETE FROM {tableName} WHERE {whereClause}";

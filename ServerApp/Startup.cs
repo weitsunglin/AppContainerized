@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyApp.Modules;
 using MyApp.Services;
-
 
 namespace MyApp
 {
@@ -13,40 +11,35 @@ namespace MyApp
     {
         public Startup(IConfiguration configuration)
         {
-            AppConfiguration = configuration;
+            Configuration = configuration;
         }
 
-        public IConfiguration AppConfiguration { get; }
+        public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection serviceCollection)
+        public void ConfigureServices(IServiceCollection services)
         {
-            serviceCollection.AddControllers();
+            services.AddControllers();
             
-            serviceCollection.AddSingleton<HttpRequestHandler>();
-            serviceCollection.AddSingleton<DatabaseHandler>();
-            serviceCollection.AddSingleton<SocketService>();
-
-            // Register module services dynamically
-            serviceCollection.AddSingleton<IModule, ModuleA>();
-            serviceCollection.AddSingleton<IModule, ModuleB>();
-            serviceCollection.AddSingleton<IModule, ModuleC>();
+            services.AddSingleton<HttpService>();
+            services.AddSingleton<DbService>();
+            services.AddSingleton<TcpService>();
         }
 
-        public void Configure(IApplicationBuilder appBuilder, IWebHostEnvironment webHostEnvironment, SocketService socketService)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TcpService tcpService)
         {
-            if (webHostEnvironment.IsDevelopment())
+            if (env.IsDevelopment())
             {
-                appBuilder.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             }
 
-            appBuilder.UseRouting();
+            app.UseRouting();
 
-            appBuilder.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            _ = socketService.StartAsync();
+            _ = tcpService.StartAsync();
         }
     }
 }

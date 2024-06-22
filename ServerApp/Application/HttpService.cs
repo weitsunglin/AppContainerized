@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 
 namespace MyApp.Services
 {
-    public class HttpRequestHandler
+    public class HttpService
     {
-        private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly HttpClient HttpClient = new HttpClient();
 
         public async Task<string> SendRequestAsync(string url)
         {
             Console.WriteLine("Sending HTTP request...");
-            var response = await httpClient.GetAsync(url);
+            var response = await HttpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
