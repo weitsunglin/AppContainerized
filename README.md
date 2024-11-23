@@ -67,7 +67,7 @@ myapp 服務通過 http://localhost:5000 和 http://localhost:5001 訪問。
 sqlserver 服務通過 localhost:1433 訪問。
 jenkins 服務通過 http://localhost:8081 和 http://localhost:50000 訪問。
 4. jenkins 會備份資料庫跟jenkins到 /c/Users/User/Desktop
-5.重新調整myapp，只要將myapp刪除再重建即可，不要連db都刪除了!!
+5. 重新調整myapp，只要將myapp刪除再重建即可，不要連db都刪除了!!
 
 ### client
 
